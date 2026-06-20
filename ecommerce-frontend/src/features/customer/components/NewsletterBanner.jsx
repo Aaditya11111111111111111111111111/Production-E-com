@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { Mail } from "lucide-react";
 
+// Pexels photo by Karolina Grabowska — shopping bags / lifestyle
+// https://www.pexels.com/photo/pink-shopping-bags-5632396/
+const BG_IMAGE =
+  "https://images.pexels.com/photos/19893521/pexels-photo-19893521.jpeg";
+
 const NewsletterBanner = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -14,14 +19,27 @@ const NewsletterBanner = () => {
   };
 
   return (
-    <section className="rounded-2xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white px-8 py-12 text-center">
-      <div className="max-w-xl mx-auto flex flex-col items-center gap-4">
+    <section
+      className="relative rounded-2xl overflow-hidden text-white px-6 py-14 text-center"
+      style={{
+        backgroundImage: `url(${BG_IMAGE})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* dark overlay so text stays readable */}
+      <div className="absolute inset-0 bg-black/50" />
+
+      {/* content */}
+      <div className="relative z-10 max-w-xl mx-auto flex flex-col items-center gap-4">
         <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
           <Mail size={22} />
         </div>
+
         <h2 className="text-2xl font-bold">Get the best deals first</h2>
-        <p className="text-blue-100 text-sm">
-          Subscribe to our newsletter and be the first to know about exclusive offers, new arrivals, and flash sales.
+        <p className="text-blue-100 text-sm max-w-sm">
+          Subscribe to our newsletter and be the first to know about exclusive
+          offers, new arrivals, and flash sales.
         </p>
 
         {submitted ? (
@@ -31,7 +49,7 @@ const NewsletterBanner = () => {
         ) : (
           <form
             onSubmit={handleSubmit}
-            className="flex w-full max-w-md gap-2 mt-2"
+            className="flex flex-col sm:flex-row w-full max-w-md gap-2 mt-2"
           >
             <input
               type="email"
@@ -39,12 +57,12 @@ const NewsletterBanner = () => {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email address"
               required
-              className="flex-1 rounded-full px-4 py-3 text-sm text-gray-800 outline-none focus:ring-2 focus:ring-white/50"
+              className="flex-1 rounded-full px-4 py-3 text-sm text-gray-800 outline-none focus:ring-2 focus:ring-white/50 min-w-0"
               aria-label="Email address"
             />
             <button
               type="submit"
-              className="bg-white text-blue-700 font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition shrink-0"
+              className="bg-white text-indigo-700 font-semibold px-6 py-3 rounded-full hover:bg-indigo-50 transition whitespace-nowrap"
             >
               Subscribe
             </button>

@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Heart } from "lucide-react";
+import { Heart, Search, X } from "lucide-react";
 import SearchBar from "./SearchBar";
 import CategoryMenu from "./CategoryMenu";
 import CartIcon from "./CartIcon";
@@ -11,15 +12,17 @@ import { useWishlist } from "@/context/WishlistContext";
 const CustomerNavbar = () => {
   const { itemCount: cartCount } = useCart();
   const { itemCount: wishlistCount } = useWishlist();
+  const [searchOpen, setSearchOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-40 bg-white border-b shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center gap-4">
+      {/* ── Main bar ─────────────────────────────────────────── */}
+      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center gap-3">
 
         {/* Logo */}
         <Link
           to={ROUTES.CUSTOMER}
-          className="flex items-center gap-2 shrink-0 mr-2"
+          className="flex items-center gap-2 shrink-0"
           aria-label="Home"
         >
           <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
@@ -28,33 +31,43 @@ const CustomerNavbar = () => {
           <span className="font-bold text-gray-900 text-lg hidden sm:block">ECommerce</span>
         </Link>
 
-        {/* Categories */}
+        {/* Categories — desktop only */}
         <div className="hidden md:flex shrink-0">
           <CategoryMenu />
         </div>
 
-        {/* Search — takes remaining space */}
-        <div className="flex-1">
+        {/* Search — takes remaining space, hidden on mobile */}
+        <div className="flex-1 hidden sm:block">
           <SearchBar />
         </div>
 
         {/* Right icons */}
-        <div className="flex items-center gap-4 shrink-0">
-          {/* Wishlist with badge */}
+        <div className="flex items-center gap-3 ml-auto sm:ml-0 shrink-0">
+
+          {/* Search toggle — mobile only */}
+          <button
+            className="sm:hidden text-gray-700 hover:text-blue-600 transition p-1"
+            onClick={() => setSearchOpen((v) => !v)}
+            aria-label="Toggle search"
+          >
+            {searchOpen ? <X size={22} /> : <Search size={22} />}
+          </button>
+
+          {/* Wishlist */}
           <Link
             to={ROUTES.CUSTOMER_WISHLIST}
-            className="relative text-gray-700 hover:text-blue-600 transition"
+            className="relative text-gray-700 hover:text-blue-600 transition p-1"
             aria-label={`Wishlist, ${wishlistCount} items`}
           >
             <Heart size={22} />
             {wishlistCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
-                {wishlistCount > 99 ? "99+" : wishlistCount}
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
+                {wishlistCount > 9 ? "9+" : wishlistCount}
               </span>
             )}
           </Link>
 
-          {/* Cart with live badge */}
+          {/* Cart */}
           <CartIcon count={cartCount} />
 
           {/* User */}
@@ -62,6 +75,13 @@ const CustomerNavbar = () => {
         </div>
 
       </div>
+
+      {/* ── Mobile search bar (expands below navbar) ─────────── */}
+      {searchOpen && (
+        <div className="sm:hidden px-4 pb-3 border-t border-gray-100 bg-white">
+          <SearchBar />
+        </div>
+      )}
     </header>
   );
 };

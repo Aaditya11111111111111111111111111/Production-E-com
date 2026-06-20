@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 
 const HERO_IMAGE_URL =
-  "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&q=80&fit=crop";
+  "https://images.pexels.com/photos/18265010/pexels-photo-18265010.jpeg";
 
 const HeroBanner = () => {
   return (

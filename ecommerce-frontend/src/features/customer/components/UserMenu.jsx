@@ -35,7 +35,7 @@ const UserMenu = () => {
       </button>
 
       {open && (
-        <div className="absolute top-full right-0 mt-2 w-52 bg-white rounded-lg shadow-lg border z-50 py-1">
+        <div className="absolute top-full right-0 mt-2 w-52 bg-white rounded-lg shadow-lg border z-50 py-1 max-w-[calc(100vw-2rem)]">
           <div className="px-4 py-2 border-b">
             <p className="text-sm font-semibold text-gray-800 truncate">{user?.name}</p>
             <p className="text-xs text-gray-500 truncate">{user?.email}</p>
