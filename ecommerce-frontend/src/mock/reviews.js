@@ -1,0 +1,12 @@
+export const REVIEWS = [
+  { id: 1, customer: { name: "Alice Johnson", avatar: "AJ" }, product: "Wireless Headphones",    rating: 5, comment: "Absolutely love these headphones! Noise cancellation is top notch and battery lasts forever.",        date: "2024-06-05" },
+  { id: 2, customer: { name: "Bob Smith",     avatar: "BS" }, product: "Wireless Headphones",    rating: 4, comment: "Great sound quality. Slightly uncomfortable after 2 hours but overall very good.",                   date: "2024-06-06" },
+  { id: 3, customer: { name: "Carol White",   avatar: "CW" }, product: "Ergonomic Office Chair", rating: 5, comment: "Best purchase this year! My back pain is completely gone after switching to this chair.",            date: "2024-06-07" },
+  { id: 4, customer: { name: "David Lee",     avatar: "DL" }, product: "Slim Fit T-Shirt",       rating: 3, comment: "Nice fabric but runs a bit small. Size up if you're between sizes.",                               date: "2024-06-08" },
+  { id: 5, customer: { name: "Eva Martinez",  avatar: "EM" }, product: "Adjustable Dumbbells",   rating: 5, comment: "Space-saving and super versatile. Exactly what I needed for my home gym!",                         date: "2024-06-09" },
+  { id: 6, customer: { name: "Frank Chen",    avatar: "FC" }, product: "4K Smart TV",            rating: 2, comment: "Picture quality is amazing but the remote stopped working after a week. Waiting for replacement.",  date: "2024-06-10" },
+  { id: 7, customer: { name: "Grace Kim",     avatar: "GK" }, product: "Yoga Mat Premium",       rating: 5, comment: "Perfect thickness, doesn't slip at all. Love the eco-friendly material.",                          date: "2024-06-11" },
+  { id: 8, customer: { name: "Henry Park",    avatar: "HP" }, product: "Running Sneakers Pro",   rating: 4, comment: "Very comfortable for long runs. Took a few days to break in but now they're perfect.",              date: "2024-06-12" },
+  { id: 9, customer: { name: "Alice Johnson", avatar: "AJ" }, product: "Vitamin C Serum",        rating: 5, comment: "My skin looks so much brighter after 3 weeks. Will definitely repurchase!",                        date: "2024-06-13" },
+  { id:10, customer: { name: "Bob Smith",     avatar: "BS" }, product: "Minimalist Desk Lamp",   rating: 3, comment: "Looks great on my desk. The USB port doesn't deliver enough power for my tablet though.",          date: "2024-06-14" },
+];

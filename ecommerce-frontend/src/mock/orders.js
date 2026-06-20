@@ -1,0 +1,131 @@
+export const ORDERS = [
+  {
+    id: "ORD-001",
+    customer: { name: "Alice Johnson", email: "alice@example.com", avatar: "AJ", phone: "+1 555-0101" },
+    shippingAddress: { line1: "123 Maple Street", city: "New York", state: "NY", zip: "10001", country: "USA" },
+    products: [
+      { id: 1, name: "Wireless Headphones", image: "https://placehold.co/60x60/e0f2fe/0284c7?text=WH", qty: 2, price: 79.99 },
+    ],
+    subtotal: 159.98,
+    shipping: 0,
+    tax: 12.80,
+    total: 172.78,
+    paymentMethod: "card",
+    orderStatus: "pending",
+    date: "2024-06-01",
+    timeline: [
+      { status: "pending", label: "Order Placed", time: "2024-06-01 09:00" },
+    ],
+  },
+  {
+    id: "ORD-002",
+    customer: { name: "Bob Smith", email: "bob@example.com", avatar: "BS", phone: "+1 555-0202" },
+    shippingAddress: { line1: "456 Oak Avenue", city: "Los Angeles", state: "CA", zip: "90001", country: "USA" },
+    products: [
+      { id: 1, name: "Wireless Headphones", image: "https://placehold.co/60x60/e0f2fe/0284c7?text=WH", qty: 1, price: 79.99 },
+    ],
+    subtotal: 79.99,
+    shipping: 5.99,
+    tax: 6.40,
+    total: 92.38,
+    paymentMethod: "cod",
+    orderStatus: "delivered",
+    date: "2024-06-02",
+    timeline: [
+      { status: "pending",   label: "Order Placed",   time: "2024-06-02 10:00" },
+      { status: "confirmed", label: "Confirmed",       time: "2024-06-02 11:30" },
+      { status: "shipped",   label: "Shipped",         time: "2024-06-03 08:00" },
+      { status: "delivered", label: "Delivered",       time: "2024-06-04 14:00" },
+    ],
+  },
+  {
+    id: "ORD-003",
+    customer: { name: "Carol White", email: "carol@example.com", avatar: "CW", phone: "+1 555-0303" },
+    shippingAddress: { line1: "789 Pine Road", city: "Chicago", state: "IL", zip: "60601", country: "USA" },
+    products: [
+      { id: 5, name: "Ergonomic Chair",    image: "https://placehold.co/60x60/f0fdf4/16a34a?text=EC", qty: 1, price: 199.99 },
+      { id: 6, name: "Yoga Mat Premium",   image: "https://placehold.co/60x60/fefce8/ca8a04?text=YM", qty: 1, price: 29.99  },
+    ],
+    subtotal: 229.98,
+    shipping: 0,
+    tax: 18.40,
+    total: 248.38,
+    paymentMethod: "upi",
+    orderStatus: "shipped",
+    date: "2024-06-03",
+    timeline: [
+      { status: "pending",    label: "Order Placed",  time: "2024-06-03 09:00" },
+      { status: "confirmed",  label: "Confirmed",     time: "2024-06-03 10:00" },
+      { status: "processing", label: "Processing",    time: "2024-06-03 13:00" },
+      { status: "shipped",    label: "Shipped",       time: "2024-06-04 07:00" },
+    ],
+  },
+  {
+    id: "ORD-004",
+    customer: { name: "David Lee", email: "david@example.com", avatar: "DL", phone: "+1 555-0404" },
+    shippingAddress: { line1: "321 Elm Blvd", city: "Houston", state: "TX", zip: "77001", country: "USA" },
+    products: [
+      { id: 2, name: "Slim Fit T-Shirt",   image: "https://placehold.co/60x60/fce7f3/db2777?text=TS", qty: 1, price: 19.99 },
+    ],
+    subtotal: 19.99,
+    shipping: 5.99,
+    tax: 1.60,
+    total: 27.58,
+    paymentMethod: "card",
+    orderStatus: "pending",
+    date: "2024-06-04",
+    timeline: [
+      { status: "pending", label: "Order Placed", time: "2024-06-04 15:00" },
+    ],
+  },
+  {
+    id: "ORD-005",
+    customer: { name: "Eva Martinez", email: "eva@example.com", avatar: "EM", phone: "+1 555-0505" },
+    shippingAddress: { line1: "654 Cedar Lane", city: "Phoenix", state: "AZ", zip: "85001", country: "USA" },
+    products: [
+      { id: 12, name: "Adjustable Dumbbells", image: "https://placehold.co/60x60/fefce8/ca8a04?text=DB", qty: 1, price: 149.99 },
+      { id: 10, name: "Matte Lipstick Set",   image: "https://placehold.co/60x60/fff1f2/e11d48?text=LS", qty: 2, price: 18.99  },
+    ],
+    subtotal: 187.97,
+    shipping: 0,
+    tax: 15.04,
+    total: 203.01,
+    paymentMethod: "card",
+    orderStatus: "confirmed",
+    date: "2024-06-05",
+    timeline: [
+      { status: "pending",   label: "Order Placed", time: "2024-06-05 11:00" },
+      { status: "confirmed", label: "Confirmed",    time: "2024-06-05 12:00" },
+    ],
+  },
+  {
+    id: "ORD-006",
+    customer: { name: "Frank Chen", email: "frank@example.com", avatar: "FC", phone: "+1 555-0606" },
+    shippingAddress: { line1: "987 Birch St", city: "Philadelphia", state: "PA", zip: "19101", country: "USA" },
+    products: [
+      { id: 7, name: '4K Smart TV 55"', image: "https://placehold.co/60x60/e0f2fe/0284c7?text=TV", qty: 1, price: 499.99 },
+    ],
+    subtotal: 499.99,
+    shipping: 0,
+    tax: 40.00,
+    total: 539.99,
+    paymentMethod: "card",
+    orderStatus: "cancelled",
+    date: "2024-06-06",
+    timeline: [
+      { status: "pending",   label: "Order Placed", time: "2024-06-06 08:00" },
+      { status: "cancelled", label: "Cancelled",    time: "2024-06-06 09:30" },
+    ],
+  },
+];
+
+export const ORDER_STATUSES = ["pending","confirmed","processing","shipped","delivered","cancelled"];
+
+export const STATUS_COLORS = {
+  pending:    "bg-yellow-100 text-yellow-700",
+  confirmed:  "bg-blue-100 text-blue-600",
+  processing: "bg-purple-100 text-purple-700",
+  shipped:    "bg-indigo-100 text-indigo-700",
+  delivered:  "bg-green-100 text-green-700",
+  cancelled:  "bg-red-100 text-red-600",
+};
