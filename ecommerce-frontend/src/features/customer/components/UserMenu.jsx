@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { LogOut, Package, Heart, Settings, User } from "lucide-react";
+import { LogOut, Package, Heart, User } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { ROUTES } from "@/constants/routes";
 

@@ -27,6 +27,7 @@ import Profile           from "../../features/customer/pages/Profile.jsx";
 // Vendor pages
 import VendorDashboard  from "../../features/vendor/pages/VendorDashboard.jsx";
 import VendorProducts   from "../../features/vendor/pages/VendorProducts.jsx";
+import VendorInventory  from "../../features/vendor/pages/VendorInventory.jsx";
 import AddProduct       from "../../features/vendor/pages/AddProduct.jsx";
 import EditProduct      from "../../features/vendor/pages/EditProduct.jsx";
 import VendorOrders     from "../../features/vendor/pages/VendorOrders.jsx";
@@ -91,6 +92,7 @@ const router = createBrowserRouter([
       { path: "products",           element: <VendorProducts /> },
       { path: "products/add",       element: <AddProduct /> },
       { path: "products/edit/:id",  element: <EditProduct /> },
+      { path: "inventory",          element: <VendorInventory /> },
       { path: "orders",             element: <VendorOrders /> },
       { path: "analytics",          element: <VendorAnalytics /> },
       { path: "reviews",            element: <VendorReviews /> },

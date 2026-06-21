@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ROUTES } from "@/constants/routes";
+import logo from "@/assets/images/logo.png";
 
 function LandingPage() {
   return (
@@ -8,11 +9,9 @@ function LandingPage() {
       {/* Brand */}
       <div className="text-center">
         <div className="flex justify-center mb-4">
-          <div className="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-2xl">E</span>
-          </div>
+          <img src={logo} alt="ECommerce Logo" className="h-15 w-auto object-contain" />
         </div>
-        <h1 className="text-4xl font-bold text-gray-900">ECommerce</h1>
+        <h1 className="text-4xl font-bold text-gray-900">ECommerce</h1> 
         <p className="text-gray-500 mt-2">Your one-stop marketplace</p>
       </div>
 

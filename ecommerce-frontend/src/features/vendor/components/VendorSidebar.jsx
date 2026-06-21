@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import {
   LayoutDashboard, Package, PlusSquare, ShoppingBag,
-  Users, Star, BarChart2, UserCircle, Settings, X,
+  Users, Star, BarChart2, UserCircle, Settings, X, Layers,
 } from "lucide-react";
 import SidebarItem from "./SidebarItem";
 import SidebarSection from "./SidebarSection";
@@ -14,7 +14,7 @@ const NAV = [
       { to: ROUTES.VENDOR_DASHBOARD,  icon: <LayoutDashboard size={18} />, label: "Dashboard"   },
       { to: ROUTES.VENDOR_PRODUCTS,   icon: <Package size={18} />,         label: "Products"    },
       { to: ROUTES.VENDOR_ADD_PRODUCT,icon: <PlusSquare size={18} />,      label: "Add Product" },
-      { to: ROUTES.VENDOR_ORDERS,     icon: <ShoppingBag size={18} />,     label: "Orders"      },
+      { to: "/vendor/inventory",      icon: <Layers size={18} />,          label: "Inventory"   },      { to: ROUTES.VENDOR_ORDERS,     icon: <ShoppingBag size={18} />,     label: "Orders"      },
       { to: ROUTES.VENDOR_CUSTOMERS,  icon: <Users size={18} />,           label: "Customers"   },
     ],
   },

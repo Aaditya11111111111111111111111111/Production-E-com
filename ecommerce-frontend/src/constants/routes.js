@@ -25,6 +25,7 @@ export const ROUTES = {
   VENDOR: "/vendor",
   VENDOR_DASHBOARD: "/vendor",
   VENDOR_PRODUCTS: "/vendor/products",
+  VENDOR_INVENTORY: "/vendor/inventory",
   VENDOR_ADD_PRODUCT: "/vendor/products/add",
   VENDOR_EDIT_PRODUCT: (id) => `/vendor/products/edit/${id}`,
   VENDOR_ORDERS: "/vendor/orders",

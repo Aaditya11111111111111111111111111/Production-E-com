@@ -3,7 +3,6 @@ import toast from "react-hot-toast";
 
 const STORAGE_KEY = "vendor_products";
 
-// ── Seed data ─────────────────────────────────────────────────
 const SEED_PRODUCTS = [
   {
     id: 1,
@@ -70,10 +69,108 @@ const SEED_PRODUCTS = [
     sku: "FG-DBS-005",
     price: 149.99,
     discount: 25,
-    stock: 30,
+    stock: 7,
     status: "active",
     image: "https://placehold.co/300x300/fefce8/ca8a04?text=Dumbbells",
     createdAt: "2024-02-10",
+  },
+  {
+    id: 6,
+    name: "Vitamin C Serum",
+    description: "Brightening serum with 15% Vitamin C.",
+    category: "beauty",
+    brand: "GlowLab",
+    sku: "GL-SRM-006",
+    price: 24.99,
+    discount: 10,
+    stock: 3,
+    status: "active",
+    image: "https://placehold.co/300x300/fdf4ff/a855f7?text=Serum",
+    createdAt: "2024-02-15",
+  },
+  {
+    id: 7,
+    name: "Yoga Mat Premium",
+    description: "6mm eco-friendly TPE yoga mat.",
+    category: "sports",
+    brand: "ZenFit",
+    sku: "ZF-YMT-007",
+    price: 29.99,
+    discount: 0,
+    stock: 0,
+    status: "inactive",
+    image: "https://placehold.co/300x300/f0fdf4/16a34a?text=Yoga+Mat",
+    createdAt: "2024-02-20",
+  },
+  {
+    id: 8,
+    name: "Minimalist Desk Lamp",
+    description: "12W LED lamp with 3 color temps.",
+    category: "home-living",
+    brand: "LuxLight",
+    sku: "LL-LMP-008",
+    price: 34.99,
+    discount: 15,
+    stock: 55,
+    status: "active",
+    image: "https://placehold.co/300x300/fefce8/ca8a04?text=Lamp",
+    createdAt: "2024-03-01",
+  },
+  {
+    id: 9,
+    name: "Running Shorts",
+    description: "Lightweight quick-dry running shorts.",
+    category: "sports",
+    brand: "SpeedRun",
+    sku: "SR-SHT-009",
+    price: 22.99,
+    discount: 0,
+    stock: 80,
+    status: "active",
+    image: "https://placehold.co/300x300/eff6ff/3b82f6?text=Shorts",
+    createdAt: "2024-03-05",
+  },
+  {
+    id: 10,
+    name: "Leather Wallet",
+    description: "Slim genuine leather bifold wallet.",
+    category: "fashion",
+    brand: "LuxLeather",
+    sku: "LL-WLT-010",
+    price: 39.99,
+    discount: 20,
+    stock: 6,
+    status: "active",
+    image: "https://placehold.co/300x300/faf5ff/7c3aed?text=Wallet",
+    createdAt: "2024-03-10",
+  },
+  {
+    id: 11,
+    name: "Bluetooth Speaker",
+    description: "Portable waterproof speaker, 12h battery.",
+    category: "electronics",
+    brand: "SoundWave",
+    sku: "SW-SPK-011",
+    price: 49.99,
+    discount: 10,
+    stock: 22,
+    status: "active",
+    image: "https://placehold.co/300x300/e0f2fe/0284c7?text=Speaker",
+    createdAt: "2024-03-15",
+  },
+  {
+    id: 12,
+    name: "Face Moisturizer SPF 50",
+    description: "Lightweight daily moisturizer with UV protection.",
+    category: "beauty",
+    brand: "DermaCare",
+    sku: "DC-MST-012",
+    price: 18.99,
+    discount: 0,
+    stock: 40,
+    status: "active",
+    image: "https://placehold.co/300x300/fdf4ff/a855f7?text=Moisturizer",
+    createdAt: "2024-03-20",
   },
 ];
 
@@ -102,7 +199,7 @@ export function ProductProvider({ children }) {
       image: data.image || "https://placehold.co/300x300/e2e8f0/64748b?text=Product",
     };
     setProducts((prev) => [newProduct, ...prev]);
-    toast.success(`"${data.name}" added successfully`);
+    toast.success(`"${data.name}" added`);
     return newProduct;
   }, []);
 
@@ -111,7 +208,6 @@ export function ProductProvider({ children }) {
     setProducts((prev) =>
       prev.map((p) => (p.id === id ? { ...p, ...data } : p))
     );
-    toast.success("Product updated");
   }, []);
 
   // ── Delete ────────────────────────────────────────────────
@@ -131,28 +227,38 @@ export function ProductProvider({ children }) {
     );
   }, []);
 
+  // ── Bulk: delete ──────────────────────────────────────────
+  const bulkDelete = useCallback((ids) => {
+    setProducts((prev) => prev.filter((p) => !ids.includes(p.id)));
+    toast(`${ids.length} product${ids.length > 1 ? "s" : ""} deleted`, { icon: "🗑️" });
+  }, []);
+
+  // ── Bulk: set status ──────────────────────────────────────
+  const bulkSetStatus = useCallback((ids, status) => {
+    setProducts((prev) =>
+      prev.map((p) => ids.includes(p.id) ? { ...p, status } : p)
+    );
+    toast.success(`${ids.length} product${ids.length > 1 ? "s" : ""} ${status}`);
+  }, []);
+
   // ── Stats ─────────────────────────────────────────────────
   const stats = {
-    total: products.length,
-    active: products.filter((p) => p.status === "active").length,
-    outOfStock: products.filter((p) => p.stock === 0).length,
+    total:        products.length,
+    active:       products.filter((p) => p.status === "active").length,
+    outOfStock:   products.filter((p) => p.stock === 0).length,
+    lowStock:     products.filter((p) => p.stock > 0 && p.stock < 10).length,
     totalRevenue: products.reduce((s, p) => s + p.price * (100 - p.discount) / 100, 0),
   };
 
-  const value = {
-    products,
-    stats,
-    addProduct,
-    editProduct,
-    deleteProduct,
-    toggleStatus,
-  };
-
-  return <ProductContext.Provider value={value}>{children}</ProductContext.Provider>;
+  return (
+    <ProductContext.Provider value={{ products, stats, addProduct, editProduct, deleteProduct, toggleStatus, bulkDelete, bulkSetStatus }}>
+      {children}
+    </ProductContext.Provider>
+  );
 }
 
 export function useProducts() {
   const ctx = useContext(ProductContext);
-  if (!ctx) throw new Error("useProducts must be used inside <ProductProvider>");
+  if (!ctx) throw new Error("useProducts must be inside <ProductProvider>");
   return ctx;
 }

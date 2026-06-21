@@ -8,6 +8,7 @@ import UserMenu from "./UserMenu";
 import { ROUTES } from "@/constants/routes";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
+import logo from "@/assets/images/logo.png";
 
 const CustomerNavbar = () => {
   const { itemCount: cartCount } = useCart();
@@ -25,10 +26,7 @@ const CustomerNavbar = () => {
           className="flex items-center gap-2 shrink-0"
           aria-label="Home"
         >
-          <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-sm">E</span>
-          </div>
-          <span className="font-bold text-gray-900 text-lg hidden sm:block">ECommerce</span>
+          <img src={logo} alt="ECommerce Logo" className="h-15 w-auto object-contain" />
         </Link>
 
         {/* Categories — desktop only */}

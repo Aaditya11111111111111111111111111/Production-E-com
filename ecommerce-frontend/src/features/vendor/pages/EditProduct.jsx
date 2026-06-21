@@ -2,13 +2,15 @@ import { useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useProducts } from "@/context/ProductContext";
+import { useNotifications } from "@/context/NotificationContext";
 import ProductForm from "../components/ProductForm";
-import EmptyState from "@/features/customer/components/EmptyState";
+import EmptyState from "../components/EmptyState";
 import { ROUTES } from "@/constants/routes";
 
 function EditProduct() {
   const { id } = useParams();
   const { products, editProduct } = useProducts();
+  const { push } = useNotifications();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
@@ -30,6 +32,7 @@ function EditProduct() {
     setLoading(true);
     setTimeout(() => {
       editProduct(product.id, data);
+      push("success", `Product "${data.name}" was updated.`);
       setLoading(false);
       navigate(ROUTES.VENDOR_PRODUCTS);
     }, 500);
@@ -46,7 +49,6 @@ function EditProduct() {
           <p className="text-sm text-gray-500 mt-0.5 truncate">{product.name}</p>
         </div>
       </div>
-
       <div className="bg-white rounded-2xl border shadow-sm p-6">
         <ProductForm
           defaultValues={product}

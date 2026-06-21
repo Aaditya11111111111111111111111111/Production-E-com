@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "@/assets/images/logo.png";
 
 // Inline SVGs for brand icons (lucide-react v1 dropped brand icons)
 const FacebookIcon = () => (
@@ -35,12 +36,9 @@ const CustomerFooter = () => {
 
           {/* Brand */}
           <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm">E</span>
-              </div>
-              <span className="font-bold text-white text-lg">ECommerce</span>
-            </div>
+            <Link to="/customer" className="flex items-center gap-2 w-fit">
+              <img src={logo} alt="ECommerce Logo" className="h-15 w-auto object-contain" />
+            </Link>
             <p className="text-sm text-gray-400 leading-relaxed">
               Your one-stop marketplace for everything you need, delivered fast.
             </p>

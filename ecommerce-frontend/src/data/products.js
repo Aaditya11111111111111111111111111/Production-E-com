@@ -1,5 +1,6 @@
 // Product images sourced from Unsplash (unsplash.com) — free to use under the Unsplash License
 
+
 export const products = [
   {
     id: 1,

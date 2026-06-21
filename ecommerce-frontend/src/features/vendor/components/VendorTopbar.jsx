@@ -1,17 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Bell, LogOut, ChevronDown, Menu, Store } from "lucide-react";
+import { LogOut, ChevronDown, Menu, Store } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { ROUTES } from "@/constants/routes";
+import NotificationPanel from "./NotificationPanel";
 
-/**
- * Props: onMenuClick — opens mobile sidebar
- */
 const VendorTopbar = ({ onMenuClick }) => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const [dropOpen, setDropOpen] = useState(false);
-  const [hasNotif] = useState(true); // mock
+  const [dropOpen, setDropOpen]   = useState(false);
+  const [notifOpen, setNotifOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
@@ -24,7 +22,7 @@ const VendorTopbar = ({ onMenuClick }) => {
 
   return (
     <header className="h-16 bg-white border-b flex items-center justify-between px-4 lg:px-6 shrink-0">
-      {/* Left: hamburger (mobile) + page title */}
+      {/* Left */}
       <div className="flex items-center gap-3">
         <button
           onClick={onMenuClick}
@@ -41,20 +39,19 @@ const VendorTopbar = ({ onMenuClick }) => {
         </div>
       </div>
 
-      {/* Right: notifications + profile */}
+      {/* Right */}
       <div className="flex items-center gap-3">
-        {/* Notifications */}
-        <button className="relative text-gray-500 hover:text-gray-700 transition" aria-label="Notifications">
-          <Bell size={20} />
-          {hasNotif && (
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white" />
-          )}
-        </button>
+        {/* Notification bell */}
+        <NotificationPanel
+          open={notifOpen}
+          onToggle={() => { setNotifOpen((v) => !v); setDropOpen(false); }}
+          onClose={() => setNotifOpen(false)}
+        />
 
         {/* Profile dropdown */}
         <div className="relative">
           <button
-            onClick={() => setDropOpen((v) => !v)}
+            onClick={() => { setDropOpen((v) => !v); setNotifOpen(false); }}
             onBlur={() => setTimeout(() => setDropOpen(false), 150)}
             className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition"
             aria-haspopup="true"
